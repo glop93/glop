@@ -1,0 +1,13 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: blog_development
+  pool: 5
+  username: tomiwaadewumi
+  password:
+
+production:
+  adapter: postgresql
+  database: glop_production
+  username: tomiwaadewumi
+  password:
