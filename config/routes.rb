@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'home#index'
   resources :products
+  get 'how-it-works' => 'home#how', as: :how
+  get 'about' => 'home#about', as: :about
+  get 'ambassadors' => 'home#ambassadors', as: :ambassadors
   get ":username" => "profiles#show", as: :profile, constraints: { username: /[^\/]+/ }
 
   # Example of regular route:
