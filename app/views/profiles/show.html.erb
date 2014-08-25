@@ -3,4 +3,8 @@
 <p><%= current_user.username %></p>
 <p><%= current_user.email %></p>
 
-
+<% @products.each do |p| %>
+	<p><%= p.title %></p>
+	<p><%= p.price %></p>
+	<p><%= p.description %></p>
+<% end %>
