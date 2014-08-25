@@ -1,3 +1,32 @@
 @import "compass";
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
+
+* {
+  margin: 0;
+}
+html, body {
+  height: 100%;
+}
+
+.wrap {
+	min-height: 100%;
+  /* equal to footer height */
+  	margin-bottom: -60px; 
+  	&:after {
+  		content: "";
+  		display: block;
+  	}
+}
+#footer, .wrap:after {
+  /* .push must be the same height as footer */
+  height: 60px; 
+}
+
+#footer {
+	background-color: #F5F5F5;
+	height: 60px;
+	clear: both;
+    position: relative;
+    z-index: 10;
+}

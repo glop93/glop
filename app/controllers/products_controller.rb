@@ -5,7 +5,14 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
+    @universities = University.all.to_a
+    if params[:university_id]
+      @university = University.find(params[:university_id]) 
+      @products = @university.products
+    else
+      @university = nil
+      @products = Product.all.to_a
+    end
   end
 
   # GET /products/1
@@ -70,6 +77,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:title, :price, :description, :telephone)
+      params.require(:product).permit(:title, :price, :description, :telephone, :category_id, :university_id, :street, :state, :country, :postcode)
     end
 end

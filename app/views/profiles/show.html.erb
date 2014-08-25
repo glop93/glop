@@ -1,10 +1,65 @@
-<h1> <%= current_user.firstname %> <%= current_user.lastname %></h1>
+<div class="container">
+    <div class="span3 well">
+        <center>
+        <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRbezqZpEuwGSvitKy3wrwnth5kysKdRqBW54cAszm_wiutku3R" name="aboutme" width="140" height="140" class="img-circle">
+        <h3><%= (@user.firstname.present?) ? "{user.firstname + @user.lastname}" : @user.username %> </h3>
+        <% if current_user && current_user.id == @user.id %>
+        	<%= link_to "Edit Profile", edit_user_registration_path %>
+        <% end %>
+		</center>
+    </div>
 
-<p><%= current_user.username %></p>
-<p><%= current_user.email %></p>
+</div>
 
-<% @products.each do |p| %>
-	<p><%= p.title %></p>
-	<p><%= p.price %></p>
-	<p><%= p.description %></p>
-<% end %>
+<div class="container">
+    <div class="row">
+        <h2>My Products</h2>
+        <% @products.each do |p| %>
+	        <div class="col-md-12">
+	        	<a href="#aboutModal" data-toggle="modal" data-target="#myModal<%= p.id%>">
+	            <div class="blockquote-box clearfix">
+	                <div class="square pull-left" style="margin-right: 10px;">
+	                    <img src="http://placehold.it/60/8e44ad/FFF&text=B" alt="" class="" />
+	                </div>
+	                <h4>  <%= p.title %> (<%= p.price %>)</h4>
+	                <p> <%= p.description %>
+	                </p>
+	            </div>
+	        	</a>
+	    
+	        </div>
+
+	            <!-- Modal -->
+			    <div class="modal fade" id="myModal<%= p.id%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			        <div class="modal-dialog">
+			            <div class="modal-content">
+			                <div class="modal-header">
+			                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+			                    <h4 class="modal-title" id="myModalLabel">More Info</h4>
+			                    </div>
+			                <div class="modal-body">
+			                    <center>
+			                    <img src="http://placehold.it/60/8e44ad/FFF&text=B" width="140" height="140" border="0" class="img-rounded"></a>
+			                    <h3 class="media-heading"><%= p.title %> <small><%= (p.university.present?) ? p.university.name : '' %></small></h3>
+			                    </center>
+			                    <hr>
+			                    <center>
+			                    <p>
+			                    	<%= p.try(:full_street_address)%>
+			                    </p>
+			                    <p class="text-left"><strong>Description: </strong><br>
+			                         <%= p.description %></p>
+			                    <br>
+			                    </center>
+			                </div>
+			                <div class="modal-footer">
+			                    <center>
+			                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			                    </center>
+			                </div>
+			            </div>
+			        </div>
+			    </div>
+        <% end %>
+    </div>
+</div>
