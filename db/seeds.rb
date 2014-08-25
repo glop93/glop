@@ -5,3 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+categories = ["Books", "Bicycles", "Electronics","Fashion & Clothing", "Sports", "Cars", "Other"]
+categories.each{|d| Category.where(:name => d).first_or_create!}
+
+universities = ["Universidad de Salamanca", "Universidad de Madrid", "Universidad de Valencia"]
+universities.each{|u| University.where(:name => u).first_or_create!}

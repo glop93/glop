@@ -1,6 +1,6 @@
 <h1>Listing products</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Title</th>
@@ -18,9 +18,9 @@
         <td><%= product.price %></td>
         <td><%= product.description %></td>
         <td><%= product.telephone %></td>
-        <td><%= link_to 'Show', product %></td>
-        <td><%= link_to 'Edit', edit_product_path(product) %></td>
-        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', product, :class=>"btn btn-primary btn-small" %></td>
+        <td><%= link_to 'Edit', edit_product_path(product), :class=>"btn btn-success btn-small" %></td>
+        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' }, :class=>"btn btn-danger btn-small"%></td>
       </tr>
     <% end %>
   </tbody>
